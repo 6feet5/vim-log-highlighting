@@ -1,7 +1,7 @@
 " Vim syntax file
-" Language:         Generic log file
-" Maintainer:       MTDL9 <https://github.com/MTDL9>
-" Latest Revision:  2020-08-23
+" Language:         CM4 log file
+" Maintainer:       6feet5 <https://github.com/6feet5>
+" Latest Revision:  2024-02-04
 
 if exists('b:current_syntax')
   finish
@@ -84,20 +84,6 @@ syn match logSysColumns '\w\(\w\|\.\|-\)\+ \(\w\|\.\|-\)\+\(\[\d\+\]\)\?:' conta
 syn match logSysProcess '\(\w\|\.\|-\)\+\(\[\d\+\]\)\?:' contains=logOperator,logNumber,logBrackets contained
 
 
-" XML Tags
-"---------------------------------------------------------------------------
-" Simplified matches, not accurate with the spec to avoid false positives
-syn match logXmlHeader       /<?\(\w\|-\)\+\(\s\+\w\+\(="[^"]*"\|='[^']*'\)\?\)*?>/ contains=logString,logXmlAttribute,logXmlNamespace
-syn match logXmlDoctype      /<!DOCTYPE[^>]*>/ contains=logString,logXmlAttribute,logXmlNamespace
-syn match logXmlTag          /<\/\?\(\(\w\|-\)\+:\)\?\(\w\|-\)\+\(\(\n\|\s\)\+\(\(\w\|-\)\+:\)\?\(\w\|-\)\+\(="[^"]*"\|='[^']*'\)\?\)*\s*\/\?>/ contains=logString,logXmlAttribute,logXmlNamespace
-syn match logXmlAttribute    contained "\w\+=" contains=logOperator
-syn match logXmlAttribute    contained "\(\n\|\s\)\(\(\w\|-\)\+:\)\?\(\w\|-\)\+\(=\)\?" contains=logXmlNamespace,logOperator
-syn match logXmlNamespace    contained "\(\w\|-\)\+:" contains=logOperator
-syn region logXmlComment     start=/<!--/ end=/-->/
-syn match logXmlCData        /<!\[CDATA\[.*\]\]>/
-syn match logXmlEntity       /&#\?\w\+;/
-
-
 " Levels
 "---------------------------------------------------------------------------
 syn keyword logLevelEmergency EMERGENCY EMERG
@@ -138,15 +124,6 @@ hi def link logFilePath Conditional
 
 hi def link logSysColumns Conditional
 hi def link logSysProcess Include
-
-hi def link logXmlHeader Function
-hi def link logXmlDoctype Function
-hi def link logXmlTag Identifier
-hi def link logXmlAttribute Type
-hi def link logXmlNamespace Include
-hi def link logXmlComment Comment
-hi def link logXmlCData String
-hi def link logXmlEntity Special
 
 hi def link logOperator Operator
 hi def link logBrackets Comment
