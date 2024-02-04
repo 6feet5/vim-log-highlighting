@@ -28,6 +28,7 @@ syn match logHexNumber    '\<0[xX]\x\+\>'
 syn match logHexNumber    '\<\d\x\+\>'
 syn match logBinaryNumber '\<0[bB][01]\+\>'
 syn match logFloatNumber  '\<\d.\d\+[eE]\?\>'
+syn match logHexDump      '\v<0x\x\x(_\x\x){1,}(_\<\d+ more elements\>){0,}'
 
 syn keyword logBoolean    TRUE FALSE True False true false
 syn keyword logNull       NULL Null null
@@ -106,6 +107,7 @@ syn keyword logLevelTrace TRACE FINER FINEST
 "---------------------------------------------------------------------------
 hi def link logNumber Number
 hi def link logHexNumber Number
+hi def link logHexDump Number
 hi def link logBinaryNumber Number
 hi def link logFloatNumber Float
 hi def link logBoolean Boolean
